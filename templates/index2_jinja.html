@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+hello world
+<br>
+<h1>jinja2的提取字符串</h1>
+{{data}}
+<br>
+{{data.name}}
+<br>
+list_header: {{data.list_1[0]}}
+<br>
+count_fun: {{data.list_1[1] + data.list_1[4]}}
+<br>
+<h1>jinja2的过滤器</h1>
+字符串大写： {{'hello world'| upper}}
+<br>
+字符串首字母大写：{{'hello world'| title}}
+<br>
+{#https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters#}
+<h1>自定义过滤器</h1>
+custom list : {{data.list_1 | li2_filter}}
+
+</body>
+</html>

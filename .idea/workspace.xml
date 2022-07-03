@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16cfc22e-fb59-4fe0-bffe-a2f996224a70" name="Changes" comment="" />
+    <list default="true" id="16cfc22e-fb59-4fe0-bffe-a2f996224a70" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/falsk_enhance/flask_project_libs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01_start_flask.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/01_start_flask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_flask_route.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/02_flask_route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03_flask_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/03_flask_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04_custom_converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/04_custom_converter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05_form_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/05_form_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06_request_object.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/06_request_object.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_302_Redirect.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/07_302_Redirect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/08_data_format_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/08_data_format_json.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09_abort_func.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/09_abort_func.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/10_jinja2_templates.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/10_jinja2_templates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11_form_templates.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/11_form_templates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/static/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/a_404.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/static/a_404.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/code_404.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/static/code_404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/405.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/templates/405.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/templates/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index2_jinja.html" beforeDir="false" afterPath="$PROJECT_DIR$/flask_basic/templates/index2_jinja.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +35,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,6 +57,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\PyCharm_project\python_flask" />
+      <recent name="F:\PyCharm_project\python_flask\flask_basic" />
       <recent name="F:\PyCharm_project\python_flask\static" />
     </key>
   </component>
@@ -49,7 +75,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/05_form_table.py" />
+      <option name="SCRIPT_NAME" value="F:\PyCharm_project\python_flask\flask_basic\05_form_table.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -70,7 +96,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/08_data_format_json.py" />
+      <option name="SCRIPT_NAME" value="F:\PyCharm_project\python_flask\flask_basic\08_data_format_json.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -91,7 +117,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/09_abort_func.py" />
+      <option name="SCRIPT_NAME" value="F:\PyCharm_project\python_flask\flask_basic\09_abort_func.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -112,7 +138,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/10_jinja2_templates.py" />
+      <option name="SCRIPT_NAME" value="F:\PyCharm_project\python_flask\flask_basic\10_jinja2_templates.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -133,7 +159,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/11_form_templates.py" />
+      <option name="SCRIPT_NAME" value="F:\PyCharm_project\python_flask\flask_basic\11_form_templates.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -161,6 +187,29 @@
       <option name="presentableId" value="Default" />
       <updated>1655379387396</updated>
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1656142350648</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1656142350648</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
 </project>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>control page</title>
+</head>
+<body>
+
+{% if age >= 18 %}
+  <div>您已成年！</div>
+{% elif age < 18 %}
+  <div>您未成年！，无法使用</div>
+{% else %}
+  <div>输入的年龄有误</div>
+{% endif %}
+
+</body>
+</html>

@@ -7,6 +7,8 @@ from flask import Flask,render_template
 
 app = Flask(__name__)
 
+
+
 @app.route('/index')
 def index():
     data = {
@@ -14,11 +16,27 @@ def index():
         'age':'18',
         'list_1':[1,2,3,4,5,6]
     }
-    return render_template('index2_jinja.html',data=data)
+    return render_template('index2_jinja.html', data=data)
+
+
+@app.route('/index01')
+def index01():
+    data = {
+        'name':'zhangsan',
+        'age':'18',
+        'list_1':[1,2,3,4,5,6]
+    }
+    return render_template('index3_data.html', **data)
+
+
 
 @app.route('/filter')
 def filter():
-
+    data = {
+        'name':'zhangsan',
+        'age':'18',
+        'list_1':[1,2,3,4,5,6]
+    }
     return render_template('index2_jinja.html',data=data)
 
 
@@ -30,7 +48,12 @@ def list_step(li):
 app.add_template_filter(list_step,'li2_filter')
 
 
+# jinja2的控制语句
+
+
+
+
 
 if __name__ == '__main__':
-    app.run(port=10010)
+    app.run(port=10010,debug=True)
 

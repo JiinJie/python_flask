@@ -1,0 +1,21 @@
+
+{% extends "father_templates.html" %}
+{% block title %}
+    测试首页
+{% endblock %}
+
+{% block body %}
+<h1>我是首页</h1>
+
+<!--if..else判断-->
+{% if age >= 18 %}
+  <div>您已成年！</div>
+{% elif age < 18 %}
+  <div>您未成年！，无法使用</div>
+{% else %}
+  <div>输入的年龄有误</div>
+{% endif %}
+
+
+
+{% endblock %}

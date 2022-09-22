@@ -25,7 +25,7 @@ app.config.from_object(Sqlconfig)
 db = SQLAlchemy(app)
 
 class students1(db.Model): # 类名即为表名
-    id = db.Column('student_id', db.Integer, primary_key = True)
+    id = db.Column('student_id', db.Integer, primary_key = True)  #id设为自增
     name = db.Column(db.String(100))
     city = db.Column(db.String(50))
     addr = db.Column(db.String(200))

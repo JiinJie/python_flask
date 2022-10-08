@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}注册title{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="row mt-5">
+  <div class="col"></div>
+  <div class="col">
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">邮箱地址</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">密码</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+        <div id="passwdHelp" class="form-text">请输入长度大于8位且包含大小写和数字的密码</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword2" class="form-label">请再次输入密码</label>
+        <input type="password" class="form-control" id="exampleInputPassword2">
+        <div id="passwdVaild" class="form-text">请再次输入密码</div>
+      </div>
+      <!--  <div class="mb-3 form-check">-->
+      <!--    <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+      <!--    <label class="form-check-label" for="exampleCheck1">记住我</label>-->
+      <!--  </div>-->
+      <button type="submit" class="btn btn-primary">提交</button>
+      <!-- 将提交按钮填充整行（100%）的效果
+      <button type="submit" class="btn btn-primary btn-block">提交</button>
+      -->
+    </form>
+
+  </div>
+  <div class="col"></div>
+</div>
+{% endblock %}

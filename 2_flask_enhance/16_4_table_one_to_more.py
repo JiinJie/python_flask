@@ -63,7 +63,7 @@ def one_to_more():
     article2.author = user  #进行绑定
     db.session.add(article1,article2)
     db.session.commit()
-    return "绑定成功"
+    return "one to more 绑定成功"
 
 
 if __name__ == '__main__':

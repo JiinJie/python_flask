@@ -78,7 +78,6 @@ def delete_article():
 
 
 
-
 @app.route('/')
 def create_table():
     engine = db.get_engine()

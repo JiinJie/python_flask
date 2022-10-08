@@ -7,6 +7,11 @@ from flask import Flask,render_template,request
 
 app = Flask(__name__)
 
+
+@app.route('/')
+def start_page():
+    return "flask is running"
+
 @app.route('/index',methods=['GET','POST'])
 def index_page():
     if request.method == 'GET':
@@ -24,4 +29,4 @@ def Login_page():
 
 
 if __name__ == '__main__':
-    app.run(port=10010)
+    app.run(host='127.0.0.1',port=10010,debug=True)

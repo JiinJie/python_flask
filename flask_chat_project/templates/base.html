@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap/bootstrap@5.0.2.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/init.css') }}">
+<!--  自己定义的css样式需要在bootstrap后进行加载，否则会发生冲突，直接会被覆盖-->
+  {% block head %} {% endblock %}
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">测试标题效果</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+<!--            quest视图函数中的方法index_page-->
+            <a class="nav-link active" aria-current="page" href="{{ url_for('quest.index_page') }}">返回首页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">发布问题</a>
+          </li>
+<!--      删除下拉标题栏    -->
+        </ul>
+        <form class="d-flex ">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+<!--     配置注册页地址，对应user中的login视图函数名   -->
+        <a class="nav-link" href="{{ url_for('user.login_page') }}">login</a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('user.register_page') }}">register</a>
+      </li>
+    </ul>
+  </nav>
+    <div class="container">{% block body %} {% endblock %} </div>
+</body>
+</html>

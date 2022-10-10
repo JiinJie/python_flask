@@ -11,31 +11,41 @@
 <div class="row mt-5">
   <div class="col"></div>
   <div class="col">
-    <form>
+    <form action="{{ url_for('user.login_page') }}" method="POST">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">邮箱地址</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
       </div>
       <!--      <div class="mb-3">-->
       <!--        <label for="exampleInputEmail1" class="form-label">验证码</label>-->
       <!--        <input type="text" class="form-control" id="exampleInputCode" aria-describedby="emailHelp">-->
       <!--      </div>-->
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="请查看邮箱中的验证码" aria-label="ValidationCode"
-               aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">发送验证码</button>
-      </div>
+<!--      <div class="input-group mb-3">-->
+<!--        <input type="text" class="form-control" placeholder="请查看邮箱中的验证码" aria-label="ValidationCode"-->
+<!--               aria-describedby="button-addon2">-->
+<!--        <button class="btn btn-outline-secondary" type="button" id="button-addon2">发送验证码</button>-->
+<!--      </div>-->
 
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">密码</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-        <div id="passwdHelp" class="form-text">请输入长度不小于8位且包含大小写和数字的密码</div>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">记住我</label>
       </div>
-      <button type="submit" class="btn btn-primary">提交</button>
+<!--  使用flask.flash 配合后端在页面输出提示信息    -->
+      {% for message in get_flashed_messages() %}
+      <div class="mb-3 form-group">
+        <div class="text-danger">{{ message }}</div>
+      </div>
+      {% endfor %}
+
+
+      <div class="mb-3 form-group">
+        <button type="submit" class="btn btn-primary">提交</button>
+      </div>
+
       <!-- 将提交按钮填充整行（100%）的效果
       <button type="submit" class="btn btn-primary btn-block">提交</button>
       -->

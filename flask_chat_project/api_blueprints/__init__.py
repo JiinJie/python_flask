@@ -6,3 +6,4 @@
 
 from .user import bp_user as bp_user
 from .quest_answer import bp_quest as bp_quest
+

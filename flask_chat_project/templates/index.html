@@ -1,11 +1,39 @@
 {% extends "base.html" %}
 
 {% block title %}首页title{% endblock %}
-
 {% block head %}
-
+<link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
 {% endblock %}
 
 {% block body %}
-<h1>首页</h1>
+<div class="row" style="margin-top: 20px;">
+    <div class="col"></div>
+    <div class="col-8">
+        <ul class="question-ul">
+            {% for quest in questions %}
+                <li>
+                    <!-- 头像信息和链接 -->
+                    <div class="side-question">
+                        <!-- #TODO 将图像上传至数据库 -->
+                        <img class="side-question-avatar" src="{{ url_for('static',filename='images/test-head.jpg') }}" alt="">
+                    </div>
+                    <!-- 展示问答内容 -->
+                    <div class="question-main">
+                        <div class="question-title">
+                            <a href="{{ url_for('quest.question_detail_page',question_id=quest.id) }}" >{{ quest.title }}</a>
+                        </div>
+                        <div class="question-content">{{ quest.content }}</div>
+                        <div class="question-detail">
+                            <span class="question-author">{{ quest.author.username }}</span>
+                            <span class="question-time">{{ quest.create_time }}</span>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+
+
+        </ul>
+    </div>
+    <div class="col"></div>
+</div>
 {% endblock %}

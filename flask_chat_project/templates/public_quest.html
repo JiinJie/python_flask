@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}发布问答title{% endblock %}
+{% block body %}
+<!-- 设置距离顶部20像素 -->
+<div class="row" style="margin-top: 20px;">
+  <div class="col"></div>
+  <div class="col-6">
+      <!-- 居中文本 -->
+      <h1 style="text-align: center;">发布问答</h1>
+      <form action="{{ url_for('quest.public_quest_page') }}" method="POST">
+          <div class="mt-3 form-group">
+              <input type="text" name="quest_title" class="form-control" id="quest_title" placeholder="请输入标题">
+          </div>
+          <div class="mt-3 form-group">
+              <textarea name="quest_content" class="form-control" id="quest_content"  rows="10" placeholder="请输入内容"></textarea>
+          </div>
+          <!--  使用flask.flash 配合后端在页面输出提示信息    -->
+        {% for message in get_flashed_messages() %}
+        <div class="form-group">
+          <div class="text-danger">{{ message }}</div>
+        </div>
+        {% endfor %}
+          <div class="form-group">
+              <button class="btn btn-primary" style="text-align: right;">发布</button>
+          </div>
+      </form>
+  </div>
+  <div class="col"></div>
+</div>
+{% endblock %}

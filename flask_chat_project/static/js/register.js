@@ -1,3 +1,4 @@
+// 注册功能前端校验
 function ClickCaptcha(){
     $("#button-send-captcha").on("click",function(event){
         var $this = $(this);  //将点击的元素作为变量

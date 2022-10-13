@@ -35,9 +35,18 @@ def login_page():
         except Exception as e:
             print("验证异常",e)
         if form.validate():  #在wtf的form中已经验证
-            email = form.email.data
+            print(form.errors)
             password = form.password.data
-            user = UserModel.query.filter_by(email=email).first()
+            #TODO (已完成)登录时可以输入邮箱，也可以直接使用用户名，在前端页面判断实现
+            if hasattr(form,'email'):
+                email = form.email.data
+                user = UserModel.query.filter_by(email=email).first()
+            elif hasattr(form,'username'):
+                username = form.username.data
+                user = UserModel.query.filter_by(username=username).first()
+            else:
+                flash("账户不能为空！")
+                return redirect(url_for('user.login_page'))
             # 数据库查找密码并解密验证，并将其作为session返回给用户
             if user and check_password_hash(user.password,password):
                 session['user_id'] = user.id
@@ -113,7 +122,6 @@ def vaild_email_code():
     print("验证码: "+random_code)# 打印下code
     # 前端获取邮箱和输入的验证码
     user_email = request.form.get("email")
-    # vaild_code = request.args.get("vaild_code")
     # 如果未填写邮箱则自动跳过
     if user_email:
         message = Message(
@@ -121,8 +129,11 @@ def vaild_email_code():
             recipients=[user_email],  #收件人
             body=f"内容：您本次登录的验证码是：{random_code} 请勿告诉任何人！ "
         )
-
-        mail.send(message)
+        try:
+            mail.send(message)
+        except Exception as e:
+            print(f"邮件发送失败: {e}")
+            return jsonify({"code": "500","status": "failed","text": "邮件服务器异常，发送失败!"})
         captcha_model = EmailModel.query.filter_by(email=user_email).first()
         if captcha_model:   #如果已经存在邮箱则更新captacha
             captcha_model.captcha = random_code

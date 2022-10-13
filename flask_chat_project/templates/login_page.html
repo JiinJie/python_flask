@@ -3,29 +3,23 @@
 {% block title %}登录title{% endblock %}
 
 {% block head %}
-
+  <!-- <script src="{{ url_for('static',filename='jquery/jquery-3.6.1.min.js') }}"></script> -->
+  <!-- <script src="{{ url_for('static',filename='js/login.js') }}"></script> -->
 {% endblock %}
 
 {% block body %}
 <!--设置分列效果，使用row 示例分为3等分，居中显示,距离顶部距离为5 -->
 <div class="row mt-5">
   <div class="col"></div>
-  <div class="col">
-    <form action="{{ url_for('user.login_page') }}" method="POST">
+  <div class="col">    
+    <!-- onsubmit="return ClickChangeName() -->
+    <form name="login_form" action="{{ url_for('user.login_page') }}" method="POST" >
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">邮箱地址</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+        <label for="InputAccount" class="form-label">账户</label>
+        <input type="text" class="form-control" id="InputAccount" name="email" >
+<!--        <input type="text" class="form-control" id="InputAccount" name="account" >-->
+<!--        <input type="hidden" class="form-control" id="SubmitAccount" name="" >-->
       </div>
-      <!--      <div class="mb-3">-->
-      <!--        <label for="exampleInputEmail1" class="form-label">验证码</label>-->
-      <!--        <input type="text" class="form-control" id="exampleInputCode" aria-describedby="emailHelp">-->
-      <!--      </div>-->
-<!--      <div class="input-group mb-3">-->
-<!--        <input type="text" class="form-control" placeholder="请查看邮箱中的验证码" aria-label="ValidationCode"-->
-<!--               aria-describedby="button-addon2">-->
-<!--        <button class="btn btn-outline-secondary" type="button" id="button-addon2">发送验证码</button>-->
-<!--      </div>-->
-
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">密码</label>
         <input type="password" class="form-control" id="exampleInputPassword1" name="password">
@@ -43,7 +37,8 @@
 
 
       <div class="mb-3 form-group">
-        <button type="submit" class="btn btn-primary">提交</button>
+        <button type="submit" class="btn btn-primary" id="login_btn" onclick="ClickChangeName()">提交</button>
+<!--        onclick="ClickChangeName()"-->
       </div>
 
       <!-- 将提交按钮填充整行（100%）的效果
@@ -54,4 +49,21 @@
   </div>
   <div class="col"></div>
 </div>
+
 {% endblock %}
+<!--#TODO js未生效,无法修改name属性！！！！-->
+<script type="text/javascript">
+   function ClickChangeName(){
+          var account = $("input[id='InputAccount']").val();
+          console.log(account)
+          document.write(account)
+          //window.alert(account)
+          if(account.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1){
+              document.getElementById('InputAccount').name='email';
+          }else{
+              document.getElementById('InputAccount').name='username';
+          }
+          document.login_form.submit();
+      }
+
+</script>

@@ -4,6 +4,6 @@
 
 # 配置初始化 方便导入
 
-from .user import bp_user as bp_user
-from .quest_answer import bp_quest as bp_quest
+from .user_api import bp_user as bp_user
+from .qa_api import bp_quest as bp_quest
 

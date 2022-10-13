@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <a>问答详情</a>
+{% endblock %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/detail.css') }}">
+{% block head %}
+<div class="alert alert-success" role="alert" style="">
+       {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+</div>
+{% endblock%}
+
+{% block body %}
+<div class="row" style="margin-top: 20px;">
+  <div class="col"></div>
+  <div class="col-8" style="background-color:#fff; padding: 20px;">
+  <h3 class="page-title">{{ question.title }}</h3>
+    <p class="question-info">
+      <span>作者: {{ question.author.username }}</span>
+      <span>时间: {{ question.create_time }}</span>
+    </p> 
+
+    <hr>
+    <p class="question-content">{{ question.content }}</p>
+    <hr>
+    <!-- 查看该quest_id的list长度及评论该问题的个数 -->
+    <h4 class="comment-group-title">评论（{{ question.answers_q|length }}）</h4>
+    <!-- 用户回复模块 -->
+    <form action="{{ url_for('quest.commit_answer') }}" method="POST">
+      <input type="hidden" name="question_uuid" value="{{ question.uuid }}">
+      <input type="hidden" name="question_id" value="{{ question.id }}">
+      <div class="form-group">
+        <input class="form-control" type="text" name="reply_content" id="reply-content" placeholder="请填写评论">
+      </div>
+      <div class="form-group" style="text-align: right;">
+        <button class="mt-2 btn btn-primary" style="float: right;">评论</button>
+      </div>
+      <br>
+      <ul class="mt-3 comment-group" style="list-style: none; padding-left: 0;">
+        {% for answer in question.answers_q %}
+          <li>
+            <div class="user-info">
+              <img class="user-avator" src="{{ url_for('static',filename='images/test-head.jpg') }}"" style="width: 38px;height: 38px;border-radius: 3px;" alt="">
+              <span class="username">{{ answer.user_id.name }}</span>
+              <span class="create-time">{{ answer.create_time }}</span>
+
+            </div>
+            <p class="comment-content">{{ answer.content }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+
+    </form>
+  </div>
+  <div class="col"></div>
+</div>
+
+{% endblock %}
+

@@ -6,4 +6,5 @@
 
 from .user_api import bp_user as bp_user
 from .qa_api import bp_quest as bp_quest
+from .email_api import bp_backact as bp_backact
 

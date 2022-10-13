@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2022/9/23 11:19
 # @Author  : jinjie
-
+import celery
 from flask import Flask,session,g  #全局变量g
 import config
-from commons import mail,db
-from api_blueprints import bp_user,bp_quest
+from mycelery import make_celery
+from commons import mail,db,redis_cli
+from api_blueprints import bp_user,bp_quest,bp_backact
 from flask_migrate import Migrate
 from db_model import UserModel
 
@@ -14,13 +15,21 @@ from db_model import UserModel
 
 app = Flask(__name__)
 app.config.from_object(config)
+# 初始化mysql数据库模块
 db.init_app(app)
+# 初始化邮件模块
 mail.init_app(app)
+# 初始化redis数据库模块
+redis_cli.init_app(app)
 
+
+celery_app = make_celery(app)
 migrate = Migrate(app=app, db=db, directory='migrate_dir')
 
 app.register_blueprint(bp_user)
 app.register_blueprint(bp_quest)
+app.register_blueprint(bp_backact)
+
 
 
 # 将session属性绑定至全局变量g，每次调用前均进行设置
@@ -58,4 +67,5 @@ def start():
 
 
 if __name__ == '__main__':
+
     app.run(port=10010,debug=True)

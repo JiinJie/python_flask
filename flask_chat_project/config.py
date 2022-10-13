@@ -32,3 +32,10 @@ MAIL_DEFAULT_SENDER = "njxf_2022@163.com"
 # MAIL_MAX_EMAILS = None  #默认为 None
 # MAIL_SUPPRESS_SEND = app.testing    #默认为 app.testing
 # MAIL_ASCII_ATTACHMENTS = False      #默认为 False
+
+
+# Celery配置
+REDIS_URL = 'redis://127.0.0.1:6379/0'
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+

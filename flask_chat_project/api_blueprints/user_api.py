@@ -103,17 +103,7 @@ def register_page():
 # 使用redis/mencached/数据库（mysql）等...
 
 
-# ”/email“测试邮箱功能是否正常，已替换为”/captcha“
-# @bp_user.route('/email')
-# def send_email():
-#     message = Message(
-#         subject="主题：邮箱测试",
-#         recipients=['jiyinjie789@foxmail.com'],  #收件人
-#         body="内容：验证码是QWER"
-#     )
-#
-#     mail.send(message)
-#     return "send success"
+
 
 # 点击获取验证码接口
 @bp_user.route('/captcha',methods=['POST'])

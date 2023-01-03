@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="{{ url_for('static',filename='jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='socketio-3.0.5.min.js') }}"></script>
+</head>
+<body>
+<h2 id="t">填写发送内容</h2>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        namespace = '/test_conn';
+        var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+        socket.on('server_response', function(res) {
+            var t = res.data;
+            $("#t").text(t);
+        });
+
+    });
+</script>
+
+
+</body>
+</html>

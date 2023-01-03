@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="{{ url_for('static',filename='jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='socketio-3.0.5.min.js') }}"></script>
+    <script type="text/javascript"> $(document).ready(function()
+    { namespace = '/test_conn';
+    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+　　　　　　　// 链接后发送日志
+        socket.on('connect', function(){ console.log(`${namespace} connected`) });
+　　　　　　　// 点击发送时将text框的内容发送到后端
+    $('form#emit').submit(function(event)
+        { socket.emit('imessage', {data: $('#emit_data').val()}); return false; });
+　　　　　　 // 接收后端广播的信息
+    socket.on('message', function(msg)
+        {   console.log(`接受到广播消息 ${msg.data}`)
+            $('#log').append('<br>' + $('<div/>').text(msg.data).html()); }); });
+
+    </script>
+</head>
+<body>
+<form id="emit" method="POST" action='#'>
+    <input type="text" name="emit_data" id="emit_data" placeholder="Message">
+    <input type="submit" value="发送">
+</form>
+<h2>Receive:</h2>
+<div id="log"></div>
+</body>
+</html>

@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2022/9/19 10:19
+# @Time    : 2022/12/7 10:48
 # @Author  : jinjie
+# @File    : myapp.py
 
-from flask import Flask
+
+from flask import Flask,render_template
 from flask_sqlalchemy import SQLAlchemy
-
-
 app = Flask(__name__)
+
+
 
 # 数据库的配置变量
 
@@ -24,18 +26,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)
 engine = db.engine()
-#engine = db.get_engine() get_engine()在3.1版本中被弃用
+# #engine = db.get_engine() get_engine()在3.1版本中被弃用
 
-@app.route('/')
-def hello_world():
-    # conn = engine.connect()
-    # conn.close()
-    with engine.connect() as conn:
-        result = conn.execute('select 1')
-        print(result.fetchone())
-        st = str(result)
-    return f"hello SQLAlchemy {st}"
+
+@ app.route('/',methods=['GET'])
+def index():
+    return {"flask is running"}
 
 
 if __name__ == '__main__':
-    app.run(debug=True,port=10010)
+    app.run(host='0.0.0.0',port=10010,debug=True)
+
+
+

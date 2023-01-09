@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<code>import ctypes as ct<font></font>
+from win32con import SW_MINIMIZE, SW_RESTORE<font></font>
+from win32ui import FindWindow, error as ui_err<font></font>
+from time import sleep<font></font>
+<font></font>
+class cls_KeyBdInput(ct.Structure):<font></font>
+    _fields_ = [<font></font>
+        ("wVk", ct.c_ushort),<font></font>
+        ("wScan", ct.c_ushort),<font></font>
+        ("dwFlags", ct.c_ulong),<font></font>
+        ("time", ct.c_ulong),<font></font>
+        ("dwExtraInfo", ct.POINTER(ct.c_ulong) )<font></font>
+    ]<font></font>
+<font></font>
+class cls_HardwareInput(ct.Structure):<font></font>
+    _fields_ = [<font></font>
+        ("uMsg", ct.c_ulong),<font></font>
+        ("wParamL", ct.c_short),<font></font>
+        ("wParamH", ct.c_ushort)<font></font>
+    ]<font></font>
+<font></font>
+class cls_MouseInput(ct.Structure):<font></font>
+    _fields_ = [<font></font>
+        ("dx", ct.c_long),<font></font>
+        ("dy", ct.c_long),<font></font>
+        ("mouseData", ct.c_ulong),<font></font>
+        ("dwFlags", ct.c_ulong),<font></font>
+        ("time", ct.c_ulong),<font></font>
+        ("dwExtraInfo", ct.POINTER(ct.c_ulong) )<font></font>
+    ]<font></font>
+<font></font>
+class cls_Input_I(ct.Union):<font></font>
+    _fields_ = [<font></font>
+        ("ki", cls_KeyBdInput),<font></font>
+        ("mi", cls_MouseInput),<font></font>
+        ("hi", cls_HardwareInput)<font></font>
+    ]<font></font>
+<font></font>
+class cls_Input(ct.Structure):<font></font>
+    _fields_ = [<font></font>
+        ("type", ct.c_ulong),<font></font>
+        ("ii", cls_Input_I)<font></font>
+    ]<font></font>
+<font></font>
+def make_input_objects( l_keys ):<font></font>
+    p_ExtraInfo_0 = ct.pointer(ct.c_ulong(0))<font></font>
+    l_inputs = [ ]<font></font>
+    for n_key, n_updown in l_keys:<font></font>
+        ki = cls_KeyBdInput( n_key, 0, n_updown, 0, p_ExtraInfo_0 )<font></font>
+        ii = cls_Input_I()<font></font>
+        ii.ki = ki<font></font>
+        l_inputs.append( ii )<font></font>
+    n_inputs = len(l_inputs)<font></font>
+    l_inputs_2=[]<font></font>
+    for ndx in range( 0, n_inputs ):<font></font>
+        s2 = "(1, l_inputs[%s])" % ndx<font></font>
+        l_inputs_2.append(s2)<font></font>
+    s_inputs = ', '.join(l_inputs_2)<font></font>
+<font></font>
+    cls_input_array = cls_Input * n_inputs<font></font>
+    o_input_array = eval( "cls_input_array( %s )" % s_inputs )<font></font>
+    p_input_array = ct.pointer( o_input_array )<font></font>
+    n_size_0 = ct.sizeof( o_input_array[0] )<font></font>
+    return ( n_inputs, p_input_array, n_size_0 )<font></font>
+<font></font>
+def send_input( window1, t_inputs,):<font></font>
+<font></font>
+    tpl1 = window1.GetWindowPlacement()<font></font>
+    window1.SetForegroundWindow()<font></font>
+    sleep(0.2)<font></font>
+    window1.SetFocus()<font></font>
+    sleep(0.2)<font></font>
+    rv = ct.windll.user32.SendInput( *t_inputs )<font></font>
+    return rv<font></font>
+<font></font>
+def test():<font></font>
+    #t_hello is "hello\n"<font></font>
+    t_hello = ( ( 0x48, 0 ), ( 0x45, 0 ), ( 0x4C, 0 ), ( 0x4C, 0 ),  ( 0x4F, 0 ), ( 0x0D, 0 ), )<font></font>
+    l_keys = [ ]<font></font>
+    l_keys.extend( t_hello )<font></font>
+    s_app_name = "Notepad"<font></font>
+    window1 = FindWindow( s_app_name, None )<font></font>
+    if window1 == None:<font></font>
+        print( "%r has no window." % s_app_name )<font></font>
+        input( 'press enter to close' )<font></font>
+        exit()<font></font>
+    t_inputs = make_input_objects( l_keys )<font></font>
+    n = send_input( window1, t_inputs )<font></font>
+<font></font>
+if __name__ == '__main__':<font></font>
+    test()<font></font>
+</code>
+</body>
+</html>
